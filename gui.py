@@ -33,12 +33,12 @@ window = sg.Window('My To-Do App',
 
 while True:
     event, values = window.read(timeout=200)
+    if event == sg.WIN_CLOSED:
+        break
+
     window["clock"].update(value=time.strftime("%d-%b-%Y %H:%M:%S"))
 
     match event:
-        case sg.WIN_CLOSED:
-            break
-
         case "Add":
             todos = functions.get_todos()
             new_todo = values['todo']
@@ -50,10 +50,7 @@ while True:
             try:
                 todo_to_edit = values['todos'][0]
                 new_todo = values['todo']
-                # Fix break-line bug
-                if not new_todo.endswith('\n'):
-                    new_todo = new_todo + '\n'
-                #
+
                 todos = functions.get_todos()
                 index = todos.index(todo_to_edit)
                 todos[index] = new_todo
