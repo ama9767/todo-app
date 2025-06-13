@@ -9,8 +9,8 @@ label = sg.Text("Type in a to-do")
 input_box = sg.InputText(tooltip="Enter to-do:", key="todo")
 
 # Adding an image file to buttons
-# add_button = sg.Button(image_source="add.png", tooltip='Add Todo Item', image_size=(25,25),
-#                       mouseover_colors="LightBlue2", key="Add")
+# add_button = sg.Button(image_source="add.png", tooltip='Add',
+# image_size=(25,25), mouseover_colors="LightBlue2", key="Add")
 
 add_button = sg.Button("Add")
 list_box = sg.Listbox(values=functions.get_todos(), key='todos',
