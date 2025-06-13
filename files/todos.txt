@@ -1,6 +1,3 @@
-clean oven
-Clean garage
 finish module 1
-
-
-
+clean attic
+fix buginstall CY sim
