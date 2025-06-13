@@ -2,11 +2,16 @@ import functions
 import FreeSimpleGUI as sg
 import time
 
-sg.theme("NeonYellow1")
+sg.theme("Topanga")
 
 clock = sg.Text('', key='clock')
 label = sg.Text("Type in a to-do")
 input_box = sg.InputText(tooltip="Enter to-do:", key="todo")
+
+# Adding an image file to buttons
+# add_button = sg.Button(image_source="add.png", tooltip='Add Todo Item', image_size=(25,25),
+#                       mouseover_colors="LightBlue2", key="Add")
+
 add_button = sg.Button("Add")
 list_box = sg.Listbox(values=functions.get_todos(), key='todos',
                       enable_events=True, size=[45, 15])
@@ -31,6 +36,9 @@ while True:
     window["clock"].update(value=time.strftime("%d-%b-%Y %H:%M:%S"))
 
     match event:
+        case sg.WIN_CLOSED:
+            break
+
         case "Add":
             todos = functions.get_todos()
             new_todo = values['todo']
@@ -65,15 +73,11 @@ while True:
             except IndexError:
                 sg.popup("Please select an item first.", font=("Helvetica", 14))
 
-
         case "Exit":
             break
 
         case "todos":
             window['todo'].update(value=values['todos'][0])
-
-        case sg.WIN_CLOSED:
-            break
 
 window.close()
 
